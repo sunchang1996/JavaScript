@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Catelog from '@/views/Catalog'
+import MagnifyingGlass from '@/components/MagnifyingGlass'
+
 Vue.use(Router)
 
 export default new Router({
@@ -9,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'Catelog',
       component: Catelog
+    },
+    {
+      path: '/MagnifyingGlass',
+      name: 'MagnifyingGlass',
+      component: MagnifyingGlass
     }
   ]
 })
