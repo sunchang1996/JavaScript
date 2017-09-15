@@ -11,6 +11,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0"
   },
