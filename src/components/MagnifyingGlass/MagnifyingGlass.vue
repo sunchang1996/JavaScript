@@ -3,11 +3,11 @@
     <h1 class="fun">放大镜 功能</h1>
     <div class="wap">
       <div class="box" id="box">
-        <img src="../../assets/iphone.jpg" alt="" srcset="">
+        <img src="../../assets/iphone.jpg">
         <div class="mask" id="mask"></div>
       </div>
       <div class="big" id="show">
-        <img src="../../assets/iphone_big.jpg" alt="" srcset="">
+        <img src="../../assets/iphone_big.jpg">
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@ export default {
       width: 350px;
       height: 350px;
       position: absolute;
-      top:40px;
+      top:140px;
       left: 380px;
       overflow: hidden;
       display: none;

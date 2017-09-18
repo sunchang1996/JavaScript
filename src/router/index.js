@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Catelog from '@/views/Catalog'
-import javaScript from '@/views/javaScript/javascript'
+import JavaScript from '@/views/JavaScript/JavaScript'
 import Html from '@/views/HTML/Html'
 import Css from '@/views/CSS/Css'
 import Git from '@/views/Git/Git'
@@ -18,9 +18,9 @@ export default new Router({
       name: 'Catelog',
       component: Catelog,
       children: [{
-        path: 'javaScript',
+        path: '/javaScript',
         name: 'javaScript',
-        component: javaScript,
+        component: JavaScript,
         children: [
           {
             path: 'MagnifyingGlass',
@@ -31,7 +31,7 @@ export default new Router({
       },
       {
         path: 'Html',
-        name: 'HTMl',
+        name: 'HTML',
         component: Html
       },
       {

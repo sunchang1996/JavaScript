@@ -6,22 +6,22 @@
     </div>
     <nav class="nav">
       <ul>
-        <li class="js">
-          <router-link to="/javascript">javascript</router-link>
+        <li class="js" :class="{active :$route.name ==='javaScript'}">
+          <router-link to="/javaScript">javascript</router-link>
         </li>
-        <li class="html">
+        <li class="html" :class="{active :$route.name ==='HTML'}">
           <router-link to="/Html">html</router-link>
         </li>
-        <li class="css">
+        <li class="css" :class="{active :$route.name ==='CSS'}">
           <router-link to="/Css">css</router-link>
         </li>
-        <li class="git">
+        <li class="git" :class="{active :$route.name ==='Git'}">
           <router-link to="/Git">git</router-link>
         </li>
-         <li class="mobile">
+         <li class="mobile" :class="{active :$route.name ==='Mobile'}">
           <router-link to="/Mobile">移动端</router-link>
         </li>
-         <li class="vue">
+         <li class="vue" :class="{active :$route.name ==='Vues'}">
           <router-link to="/Vues">vue</router-link>
         </li>
       </ul>
@@ -31,6 +31,9 @@
 </template>
 <script>
 export default {
+  mounted () {
+    console.log(this.$route)
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -59,15 +62,15 @@ export default {
       background-color: #ccc;
       height: 30px;
       line-height: 30px;
-      &:hover{
-        background-color: blue;
-      }
       & > a {
         color: #fff; 
         display: inline-block;
         width: 100%;
         height: 100%;       
       }
+    }
+    .active{
+      background-color: #64a2f1;
     }
   }
 }
