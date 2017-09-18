@@ -23,7 +23,6 @@ export default {
       const box = document.getElementById('box')
       const mask = document.getElementById('mask')
       const show = document.getElementById('show')
-      console.log('show', show)
       const img = show.getElementsByTagName('img')[0]
       function move (e) { // 计算
         let left = e.clientX - box.offsetLeft - (mask.offsetWidth / 2)
@@ -97,7 +96,7 @@ export default {
       top:40px;
       left: 380px;
       overflow: hidden;
-      // display: none;
+      display: none;
       img{
         width: 200%;
         height: 200%;

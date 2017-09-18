@@ -4,13 +4,29 @@
       <h1 class="name">Hi，I am sunchang</h1>
       <!-- <h2 class="intro">欢迎来到我的个人小网站，我将这里分享自己的学习经历</h2> -->
     </div>
-    <main>
+    <nav class="nav">
       <ul>
-        <li class="">
-          <router-link to="/MagnifyingGlass">放大镜</router-link>
+        <li class="js">
+          <router-link to="/javascript">javascript</router-link>
+        </li>
+        <li class="html">
+          <router-link to="/Html">html</router-link>
+        </li>
+        <li class="css">
+          <router-link to="/Css">css</router-link>
+        </li>
+        <li class="git">
+          <router-link to="/Git">git</router-link>
+        </li>
+         <li class="mobile">
+          <router-link to="/Mobile">移动端</router-link>
+        </li>
+         <li class="vue">
+          <router-link to="/Vues">vue</router-link>
         </li>
       </ul>
-    </main>
+    </nav>
+      <router-view></router-view>
   </div>
 </template>
 <script>
@@ -31,6 +47,27 @@ export default {
     .name{
       font-size: 18px;
       font-weight: 500;
+    }
+  }
+  .nav{
+    width: 100%;
+    height: 30px;
+    ul li{
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      background-color: #ccc;
+      height: 30px;
+      line-height: 30px;
+      &:hover{
+        background-color: blue;
+      }
+      & > a {
+        color: #fff; 
+        display: inline-block;
+        width: 100%;
+        height: 100%;       
+      }
     }
   }
 }
