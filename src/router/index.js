@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Catelog from '@/views/Catalog'
-import MagnifyingGlass from '@/components/MagnifyingGlass'
+import MagnifyingGlass from '@/components/MagnifyingGlass/MagnifyingGlass'
 
 Vue.use(Router)
 
