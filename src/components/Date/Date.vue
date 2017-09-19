@@ -13,22 +13,21 @@
         </div>
         <i class="iconfont icon-arrow_right_small" @click.stop="changeCurrentMonth(currentMonth + 1)"></i>
       </div>
-    <div class="title">
-      <span class="day">日</span>
-      <span class="day">一</span>
-      <span class="day">二</span>
-      <span class="day">三</span>
-      <span class="day">四</span>
-      <span class="day">五</span>
-      <span class="day">六</span>
+      <div class="title">
+        <span class="day">日</span>
+        <span class="day">一</span>
+        <span class="day">二</span>
+        <span class="day">三</span>
+        <span class="day">四</span>
+        <span class="day">五</span>
+        <span class="day">六</span>
+      </div>
+      <ul class="days">
+        <li class="date" v-for="(date, index) in dateList" :key="index" @click="onSelectDate(date)"
+        :class="{inactive: date.month !== currentMonth, active: date.year === currentYear && date.month === currentMonth && date.day === currentDay}">
+        {{date.day}}</li>
+      </ul>
     </div>
-    <ul class="days">
-      <li class="date" v-for="(date, index) in dateList" :key="index" @click="onSelectDate(date)"
-      :class="{inactive: date.month !== currentMonth, active: date.year === currentYear && date.month === currentMonth && date.day === currentDay}">
-      {{date.day}}</li>
-    </ul>
-    <div class="global--button blue" @click.stop="onSubmit">确定</div>
-  </div>
   </div>
 </template>
 <script>
@@ -50,9 +49,6 @@ export default {
       showPanel: false,
       date: ''
     }
-  },
-  created () {
-    console.log('时间', this.dateList)
   },
   computed: {
     currentDate () { // 当前时间的毫秒数
@@ -108,18 +104,14 @@ export default {
   methods: {
     changeCurrentMonth (month) {
       this.currentMonth = month
-      console.log('this.currentMonth', this.currentMonth)
     },
     onSelectDate ({year, month, day}) {
       this.currentYear = year
       this.currentMonth = month
       this.currentDay = day
-      // this.
-    },
-    onSubmit () {
+      this.date = this.formattedDate
       this.$emit('update:data', this.formattedDate)
       this.showPanel = false
-      this.date = this.formattedDate
     }
   },
   watch: {

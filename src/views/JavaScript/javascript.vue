@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="javascript">
     <ul>
       <li class="">
         <router-link to="/javaScript/MagnifyingGlass">放大镜</router-link>
       </li>
       <li class="">
-        <router-link to="/javaScript/Data">时间</router-link>
+        <router-link to="/javaScript/Date">时间选择器</router-link>
       </li>
-      <router-view></router-view>
     </ul>
+    <router-view></router-view>
   </div>
 </template>
 <script>
