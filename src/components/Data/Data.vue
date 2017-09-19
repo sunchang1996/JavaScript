@@ -1,17 +1,18 @@
 <template>
-  <div class="data-picker">
-    <div class="input-wrapper">
-      <input type="text" placeholder="">
-      <i class="iconfont icon-arrow_down"></i>
+  <div class="date-picker">
+    <div class="input-wrapper" @click.stop = "showPanel = !showPanel">
+      <input type="text" :placeholder="placeholder" disabled v-model="date" class="input">
+      <i class="iconfont icon-arrow_down" :class="{show: showPanel}"></i>
     </div>
-    <div class="panel">
-      <i class="iconfont icon-arrow_left_small"></i>
-      <div class="date">
-        <span class="text">月</span>
-        <span class="text"></span>
+    <div class="panel" v-if="showPanel">
+      <div class="header">
+        <i class="iconfont icon-arrow_left_small" @click.stop = "changeCurrentMonth(currentMonth - 1)"></i>
+        <div class="date">
+          <span class="text">{{currentMonth}}月</span>
+          <span class="text">{{currentYear}}</span>
+        </div>
+        <i class="iconfont icon-arrow_right_small" @click.stop="changeCurrentMonth(currentMonth + 1)"></i>
       </div>
-      <i class="iconfont icon-arrow_right_small"></i>
-    </div>
     <div class="title">
       <span class="day">日</span>
       <span class="day">一</span>
@@ -22,17 +23,120 @@
       <span class="day">六</span>
     </div>
     <ul class="days">
-      <li class="data"></li>
+      <li class="date" v-for="(date, index) in dateList" :key="index" @click="onSelectDate(date)"
+      :class="{inactive: date.month !== currentMonth, active: date.year === currentYear && date.month === currentMonth && date.day === currentDay}">
+      {{date.day}}</li>
     </ul>
-    <div class="global--button blue">确定</div>
+    <div class="global--button blue" @click.stop="onSubmit">确定</div>
+  </div>
   </div>
 </template>
 <script>
+const TOTAL_LENGTH = 42
+
 export default {
+  name: 'data',
+  props: {
+    placeholder: String
+    // date: {
+    //   type: [Date, Number, String]
+    // }
+  },
+  data () {
+    return {
+      currentYear: new Date().getFullYear(),
+      currentMonth: new Date().getMonth() + 1,
+      currentDay: new Date().getDate(),
+      showPanel: false,
+      date: ''
+    }
+  },
+  created () {
+    console.log('时间', this.dateList)
+  },
+  computed: {
+    currentDate () { // 当前时间的毫秒数
+      return new Date(this.currentYear, this.currentMonth, this.currentDay).getTime()
+    },
+    formattedDate () { // 格式化今天的日期时间
+      return `${this.currentYear} - ${this.currentMonth} - ${this.currentDay}`
+    },
+    currentMonthLength () { // 这个月的总天数
+      return new Date(this.currentYear, this.currentMonth, 0).getDate()
+    },
+    currentMonthDateList () { // 遍历这个月的天数
+      return [...new Array(this.currentMonthLength)]
+      .map((value, index) => ({
+        year: this.currentYear,
+        month: this.currentMonth,
+        day: index + 1
+      }))
+    },
+    currentMonthStartDay () {
+      return new Date(this.currentYear, this.currentMonth - 1, 1).getDay()
+    },
+    previousMonthDateList () {
+      const previousMouthLength = new Date(this.currentYear, this.currentMonth - 1, 0).getDate() // 上个月的天数
+      const year = this.currentMouth <= 0 ? this.currentYear - 1 : this.currentYear// 如果月数小于等于0 年数-1
+      const month = this.currentMouth <= 0 ? 12 : this.currentMonth - 1 // 如果月数小于等于0 就会到第十二月
+      return [...new Array(previousMouthLength)].map((value, index) => ({
+        year,
+        month,
+        day: index + 1
+      }))
+      .reverse()
+      .slice(0, this.currentMonthStartDay).reverse()
+    },
+    nextMonthDateList () {
+      const length = TOTAL_LENGTH - this.currentMonthLength - this.currentMonthStartDay
+      const year = this.currentMonth + 1 >= 12 ? this.currentYear + 1 : this.currentYear // 月份+1 大于等于12 年就加1
+      const month = this.currentMonth + 1 >= 12 ? 1 : this.currentMonth + 1
+      return [...new Array(length)].map((value, index) => ({
+        year,
+        month,
+        day: index + 1
+      }))
+    },
+    dateList () {
+      return [
+        ...this.previousMonthDateList,
+        ...this.currentMonthDateList,
+        ...this.nextMonthDateList
+      ]
+    }
+  },
+  methods: {
+    changeCurrentMonth (month) {
+      this.currentMonth = month
+      console.log('this.currentMonth', this.currentMonth)
+    },
+    onSelectDate ({year, month, day}) {
+      this.currentYear = year
+      this.currentMonth = month
+      this.currentDay = day
+      // this.
+    },
+    onSubmit () {
+      this.$emit('update:data', this.formattedDate)
+      this.showPanel = false
+      this.date = this.formattedDate
+    }
+  },
+  watch: {
+    currentMonth (month) {
+      if (month > 12) {
+        this.currentMonth = 1
+        this.currentYear = this.currentYear + 1
+      }
+      if (month < 1) {
+        this.currentYear = this.currentYear - 1
+        this.currentMonth = 12
+      }
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
-
 .date-picker {
   position: relative;
   font-size: 13px;
@@ -41,8 +145,8 @@ export default {
     align-items: center;
 
     height: 100%;
-    padding: 12px;
-
+    padding: 6px;
+    width: 200px;
     border-radius: 2px;
     background-color: #ffffff;
     border: solid 1px rgba(7, 28, 78, 0.1);
