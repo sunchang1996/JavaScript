@@ -8,6 +8,7 @@ import Git from '@/views/Git/Git'
 import Mobile from '@/views/Mobile/Mobile'
 import Vues from '@/views/Vue/VUE'
 import MagnifyingGlass from '@/components/MagnifyingGlass/MagnifyingGlass'
+import Data from '@/components/Data/Data'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
             path: 'MagnifyingGlass',
             name: 'MagnifyingGlass',
             component: MagnifyingGlass
+          },
+          {
+            path: 'Data',
+            name: 'Data',
+            component: Data
           }
         ]
       },

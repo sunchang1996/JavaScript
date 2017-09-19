@@ -4,6 +4,9 @@
       <li class="">
         <router-link to="/javaScript/MagnifyingGlass">放大镜</router-link>
       </li>
+      <li class="">
+        <router-link to="/javaScript/Data">时间</router-link>
+      </li>
       <router-view></router-view>
     </ul>
   </div>
