@@ -1,10 +1,10 @@
 <template>
   <div class="date-picker">
-    <div class="input-wrapper" @click.stop = "showPanel = !showPanel">
+    <div class="input-wrapper" @click.stop = "showPanel = !showPanel" :style = "{width:width}">
       <input type="text" :placeholder="placeholder" disabled v-model="date" class="input">
       <i class="iconfont icon-arrow_down" :class="{show: showPanel}"></i>
     </div>
-    <div class="panel" v-if="showPanel">
+    <div class="panel" v-if="showPanel" :style="{width:width}">
       <div class="header">
         <i class="iconfont icon-arrow_left_small" @click.stop = "changeCurrentMonth(currentMonth - 1)"></i>
         <div class="date">
@@ -36,7 +36,11 @@ const TOTAL_LENGTH = 42
 export default {
   name: 'data',
   props: {
-    placeholder: String
+    placeholder: String,
+    width: {
+      type: String,
+      default: '300px'
+    }
     // date: {
     //   type: [Date, Number, String]
     // }
@@ -138,7 +142,6 @@ export default {
 
     height: 100%;
     padding: 6px;
-    width: 200px;
     border-radius: 2px;
     background-color: #ffffff;
     border: solid 1px rgba(7, 28, 78, 0.1);
