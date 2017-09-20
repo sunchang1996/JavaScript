@@ -136,12 +136,13 @@ export default {
 .date-picker {
   position: relative;
   font-size: 13px;
+  height: 45px;
   .input-wrapper {
     display: flex;
     align-items: center;
 
     height: 100%;
-    padding: 6px;
+    padding:0px 6px;
     border-radius: 2px;
     background-color: #ffffff;
     border: solid 1px rgba(7, 28, 78, 0.1);
