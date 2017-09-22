@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <h1 class="name">Hi，I am sunchang</h1>
+      <!-- <h1 class="name">Hi，I am sunchang</h1>  -->
       <!-- <h2 class="intro">欢迎来到我的个人小网站，我将这里分享自己的学习经历</h2> -->
     </div>
     <nav class="nav">

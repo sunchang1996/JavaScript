@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-const TOTAL_LENGTH = 42
+const TOTAL_LENGTH = 35
 
 export default {
   name: 'data',
@@ -41,9 +41,6 @@ export default {
       type: String,
       default: '300px'
     }
-    // date: {
-    //   type: [Date, Number, String]
-    // }
   },
   data () {
     return {
@@ -53,6 +50,9 @@ export default {
       showPanel: false,
       date: ''
     }
+  },
+  mounted () {
+    console.log('当前月', this.previousMonthDateList)
   },
   computed: {
     currentDate () { // 当前时间的毫秒数
@@ -72,7 +72,7 @@ export default {
         day: index + 1
       }))
     },
-    currentMonthStartDay () {
+    currentMonthStartDay () { // 开始日期 getDay返回一个具体日期中一周的第几天
       return new Date(this.currentYear, this.currentMonth - 1, 1).getDay()
     },
     previousMonthDateList () {

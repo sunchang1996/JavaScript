@@ -24,9 +24,7 @@ export default {
   height: 50px;
   padding: 10px;
   border: 5px solid green;
-  width: -moz-calc(100% - 40px);
-  width: -webkit-calc(100% - 40px);
-  width:  calc(100% - 20px); 
+  width:  calc(100% - 10px); 
 }
 
 </style>
