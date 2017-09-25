@@ -9,7 +9,7 @@ import Mobile from '@/views/Mobile/Mobile'
 import Vues from '@/views/Vue/VUE'
 import MagnifyingGlass from '@/components/MagnifyingGlass/MagnifyingGlass'
 import Date from '@/components/Date/Date'
-import Drag from '@/components/Drag/Drag'
+import Drag from '@/components/Drag/Drag.vue'
 
 Vue.use(Router)
 

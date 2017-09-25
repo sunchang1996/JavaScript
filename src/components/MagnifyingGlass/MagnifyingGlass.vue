@@ -94,7 +94,7 @@ export default {
       height: 350px;
       position: absolute;
       top:140px;
-      left: 380px;
+      left: 580px;
       overflow: hidden;
       display: none;
       img{

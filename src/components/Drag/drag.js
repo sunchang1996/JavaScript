@@ -1,31 +1,20 @@
-
-export default function Drag (ele, L, T) {
+export default function Drag (ele, left, top) {
   this.ele = ele
-  this.l = null // 当鼠标按下的时候才会赋值
-  this.t = null
+  this.left = null // 当鼠标按下的时候才会赋值
+  this.top = null
   this.minL = 0
   this.minT = 0
-  this.maxL = L || (document.documentElement.clientWidth || document.body.clientWidth) - this.ele.offsetWidth
-  this.maxT = T || (document.documentElement.clientHeight || document.body.clientHeight) - this.ele.offsetHeight
-  var that = this
-  this.DOWN = function (e) { // this.down 中的this要看这个方法在哪执行的时候this是谁
-    that.down(e)
-  }
-  this.MOVE = function (e) {
-    e = e || window.event
-    that.move(e)
-  }
-  this.UP = function (e) {
-    e = e || window.event
-    that.up(e)
-  }
+  this.maxL = left || (document.documentElement.clientWidth || document.body.clientWidth) - this.ele.offsetWidth
+  this.maxT = top || (document.documentElement.clientHeight || document.body.clientHeight) - this.ele.offsetHeight
+  this.DOWN = (e) => this.down(e)
+  this.MOVE = (e) => this.move(e)
+  this.UP = (e) => this.up(e)
   this.ele.onmousedown = this.DOWN
 }
 Drag.prototype.down = function (e) { // mousedown 事件绑定
   e = e || window.event
-  console.log('this.l', this.l)
-  this.l = e.clientX - this.ele.offsetLeft
-  this.t = e.clientY - this.ele.offsetTop
+  this.left = e.clientX - this.ele.offsetLeft
+  this.top = e.clientY - this.ele.offsetTop
   if (this.ele.setCapture) {
     this.ele.setCapture()
     this.ele.onmousemove = this.MOVE
@@ -38,13 +27,13 @@ Drag.prototype.down = function (e) { // mousedown 事件绑定
 Drag.prototype.move = function (e) { // mousemove 事件绑定
   e = e || window.event
 
-  var l = e.clientX - this.l
-  var t = e.clientY - this.t
-  l = l < this.minL ? this.minL : l > this.maxL ? this.maxL : l
-  t = t < this.minT ? this.minT : t > this.maxT ? this.maxT : t
+  var left = e.clientX - this.left
+  var top = e.clientY - this.top
+  left = left < this.minL ? this.minL : left > this.maxL ? this.maxL : left
+  top = top < this.minT ? this.minT : top > this.maxT ? this.maxT : top
 
-  this.ele.style.left = `${l}px`
-  this.ele.style.top = `${t}px`
+  this.ele.style.left = `${left}px`
+  this.ele.style.top = `${top}px`
   e.preventDefault()
 }
 Drag.prototype.up = function (e) { // mouseup 事件绑定
