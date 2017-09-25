@@ -7,9 +7,11 @@ import Css from '@/views/CSS/Css'
 import Git from '@/views/Git/Git'
 import Mobile from '@/views/Mobile/Mobile'
 import Vues from '@/views/Vue/VUE'
+
 import MagnifyingGlass from '@/components/MagnifyingGlass/MagnifyingGlass'
 import Date from '@/components/Date/Date'
 import Drag from '@/components/Drag/Drag.vue'
+import Through from '@/components/Through/Through.vue'
 
 Vue.use(Router)
 
@@ -38,6 +40,11 @@ export default new Router({
             path: 'Drag',
             name: 'Drag',
             component: Drag
+          },
+          {
+            path: 'Through',
+            name: 'Through',
+            component: Through
           }
         ]
       },
