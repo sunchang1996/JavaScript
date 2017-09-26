@@ -14,7 +14,6 @@ export default {
   methods: {
     drag () {
       const box = this.$refs.box
-      console.log('box', box)
       this.drags = new Dragjs(box)
     }
   }

@@ -12,6 +12,7 @@ import MagnifyingGlass from '@/components/MagnifyingGlass/MagnifyingGlass'
 import Date from '@/components/Date/Date'
 import Drag from '@/components/Drag/Drag.vue'
 import Through from '@/components/Through/Through.vue'
+import Loading from '@/components/Loading/Loading'
 
 Vue.use(Router)
 
@@ -54,9 +55,16 @@ export default new Router({
         component: Html
       },
       {
-        path: 'CSS',
+        path: '/Css',
         name: 'CSS',
-        component: Css
+        component: Css,
+        children: [
+          {
+            path: 'Loading',
+            name: 'Loading',
+            component: Loading
+          }
+        ]
       },
       {
         path: 'Git',

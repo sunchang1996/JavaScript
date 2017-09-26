@@ -1,10 +1,9 @@
 <template>
-  <div>CSS
-    <div>calc测试学习</div>
-    <div class="demo">
-      <div class="box"></div>
-    </div>
-    
+  <div class="CSS">
+    <ul class="options">
+      <router-link class="option" to="/Css/Loading" tag="li">loading</router-link>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -13,18 +12,18 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.demo{
-  width: 300px;
-  background: #60f;
-  padding: 3px 0;
+.CSS{
+  width: 200px;
+  .li{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+  }
 }
-.box{
-  width: 100%;
-  background: #f60;
-  height: 50px;
-  padding: 10px;
-  border: 5px solid green;
-  width:  calc(100% - 10px); 
+.router-link-active{
+  background-color:#64a2f0 ;
+  color: #fff;
 }
 
 </style>
