@@ -1,7 +1,9 @@
 <template>
-  <div class="css">loading</div>
+  <div class="css">
+    
+  </div>
 </template>
 <script>
 </script>
-<style lang="less" scoped>
+<style lang="less" scopsed>
 </style>

@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import 'jquery/dist/jquery.min'
 require('@/assets/iconfont/iconfont.css')
-
+require('animate.css')
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
