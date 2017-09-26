@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="box">
-      <img src="../../assets/360.jpg" alt="" srcset="">
+      <img src="../../assets/360.jpg">
       <div class="mask">遮罩层</div>
     </div>
   </div>
